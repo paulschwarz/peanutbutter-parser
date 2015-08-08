@@ -5,15 +5,24 @@ import me.paulschwarz.peanutbutter.Parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class PairParserTest extends TestCase {
 
+    static final List<String> DICTIONARY = new ArrayList<String>(Arrays.asList(
+            "pea",
+            "peanut",
+            "nut",
+            "but",
+            "butt",
+            "butter"
+    ));
     private Parser parser;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        this.parser = new PairParser();
+        this.parser = new PairParser(DICTIONARY);
     }
 
     public void testWhenEmpty()

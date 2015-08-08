@@ -1,20 +1,15 @@
 package me.paulschwarz.peanutbutter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public interface Parser {
+public abstract class Parser {
 
-    static final List<String> DICTIONARY = new ArrayList<String>(Arrays.asList(
-            "pea",
-            "peanut",
-            "nut",
-            "but",
-            "butt",
-            "butter"
-    ));
+    protected List<String> dictionary;
 
-    public List<String> parse(String input);
+    public Parser(List<String> dictionary){
+        this.dictionary = dictionary;
+    }
+
+    public abstract List<String> parse(String input);
 
 }

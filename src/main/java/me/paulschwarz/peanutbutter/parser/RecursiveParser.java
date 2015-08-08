@@ -5,7 +5,11 @@ import me.paulschwarz.peanutbutter.Parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecursiveParser implements Parser {
+public class RecursiveParser extends Parser {
+
+    public RecursiveParser(List<String> dictionary){
+        super(dictionary);
+    }
 
     @Override
     public List<String> parse(String input) {
@@ -19,13 +23,13 @@ public class RecursiveParser implements Parser {
         for (int i = 1; i < input.length() - 1; i++){
             l = input.substring(0, i);
             r = input.substring(i, input.length());
-            if (DICTIONARY.contains(l) && DICTIONARY.contains(r)){
+            if (dictionary.contains(l) && dictionary.contains(r)){
                 split(words, l);
                 split(words, r);
                 return;
             }
         }
-        if (DICTIONARY.contains(input)){
+        if (dictionary.contains(input)){
             words.add(input);
         }
     }

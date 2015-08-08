@@ -3,10 +3,13 @@ package me.paulschwarz.peanutbutter.parser;
 import me.paulschwarz.peanutbutter.Parser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class PairParser implements Parser {
+public class PairParser extends Parser {
+
+    public PairParser(List<String> dictionary){
+        super(dictionary);
+    }
 
     @Override
     public List<String> parse(String input) {
@@ -15,13 +18,13 @@ public class PairParser implements Parser {
         for (int i = 1; i < input.length() - 1; i++){
             l = input.substring(0, i);
             r = input.substring(i, input.length());
-            if (DICTIONARY.contains(l) && DICTIONARY.contains(r)){
+            if (dictionary.contains(l) && dictionary.contains(r)){
                 words.add(l);
                 words.add(r);
                 return words;
             }
         }
-        if (DICTIONARY.contains(input)){
+        if (dictionary.contains(input)){
             words.add(input);
         }
         return words;
