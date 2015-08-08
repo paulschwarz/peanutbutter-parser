@@ -21,10 +21,20 @@ public class PairParserTest extends TestCase {
         assertTrue(parser.parse("").isEmpty());
     }
 
+    public void testUnknownWord()
+    {
+        assertTrue(parser.parse("pe").isEmpty());
+    }
+
+    public void testExtraneousCharacters()
+    {
+        assertTrue(parser.parse("peanuts").isEmpty());
+    }
+
     public void testMatchSingle()
     {
-        assertTrue(parser.parse("butter")
-                .containsAll(new ArrayList<String>(Arrays.asList("butter"))));
+        assertTrue(parser.parse("pea")
+                .containsAll(new ArrayList<String>(Arrays.asList("pea"))));
     }
 
     public void testMatchPair()
